@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="et">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Konto info</title>
+  <style>
+    body{font-family:sans-serif;padding:1.5rem;max-width:520px;margin:auto;background:#f5f5f5}
+    .box{border:1px solid #ddd;background:#fff;padding:1rem;border-radius:8px;box-shadow:0 0 8px rgba(0,0,0,.1)}
+    button{margin-top:.6rem;padding:.6rem 1rem;font-size:1rem;background:#0077cc;color:#fff;border:0;border-radius:5px;cursor:pointer}
+    button:hover{background:#005fa3}
+    hr{margin:1rem 0}
+  </style>
+</head>
+<body>
+  <h2>Konto info</h2>
+  <div class="box">
+    <div><strong>IBAN:</strong></div>
+    <div id="iban" style="font-size:1.1rem;margin-bottom:.5rem">EE497700771008534700</div>
+    <button onclick="copyText('iban')">Kopeeri kontonumber</button>
+
+    <hr>
+
+    <div><strong>Saaja:</strong></div>
+    <div id="name" style="font-size:1.1rem;margin-bottom:.5rem">Margus Udeküll</div>
+    <button onclick="copyText('name')">Kopeeri nimi</button>
+  </div>
+
+  <script>
+    function copyText(id){
+      const t = document.getElementById(id).innerText.trim();
+      // vaikne kopeerimine – ei ühtegi teadet
+      navigator.clipboard && navigator.clipboard.writeText(t).catch(()=>{});
+    }
+  </script>
+</body>
+</html>
